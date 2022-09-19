@@ -1,5 +1,7 @@
 package com.android.lyricfinder.feature_search.data.remote.dto
 
+import com.android.lyricfinder.feature_search.domain.model.Search
+
 data class SearchDto(
     val meta: Meta,
     val response: Response
@@ -48,7 +50,16 @@ data class Result(
     val title_with_featured: String,
     val updated_by_human_at: Int,
     val url: String
-)
+){
+    fun toSearch(): Search {
+        return Search(
+            imageUrl = song_art_image_thumbnail_url,
+            songTitle = title,
+            artistName = artist_names,
+            songId = id
+        )
+    }
+}
 
 data class FeaturedArtist(
     val _type: String,

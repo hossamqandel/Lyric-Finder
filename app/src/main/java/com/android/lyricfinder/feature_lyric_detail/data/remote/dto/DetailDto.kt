@@ -1,5 +1,6 @@
 package com.android.lyricfinder.feature_lyric_detail.data.remote
 
+import com.android.lyricfinder.feature_lyric_detail.domain.model.Detail
 import com.google.gson.annotations.SerializedName
 
 data class DetailDto(
@@ -22,7 +23,15 @@ data class Lyrics(
     val path: String,
     val song_id: Int,
     val tracking_data: TrackingData
-)
+){
+
+    fun toDetail(): Detail {
+        return Detail(
+            lyrics = lyrics.body.html,
+            songTitle = "Lyrics for ${tracking_data.title}"
+        )
+    }
+}
 
 data class LyricsX(
     val body: Body
