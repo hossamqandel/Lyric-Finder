@@ -6,6 +6,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+private const val PER_PAGE = "10"
+private const val PAGE = "1"
+
 interface LyricFinderService {
 
     @GET("songs/{songId}/lyrics")
@@ -17,8 +20,8 @@ interface LyricFinderService {
     @GET("search")
     suspend fun searchForSongOrArtist(
         @Query("q") q: String,
-        @Query("per_page") per_page: String = "10",
-        @Query("page") page: String = "1"
+        @Query("per_page") per_page: String = PER_PAGE,
+        @Query("page") page: String = PAGE
     ): SearchDto
 
 

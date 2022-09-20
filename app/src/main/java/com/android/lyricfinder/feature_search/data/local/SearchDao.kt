@@ -10,7 +10,7 @@ import com.android.lyricfinder.feature_search.data.local.entity.SearchEntity
 interface SearchDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSong(searchEntity: SearchEntity)
+    suspend fun insertSongs(searchEntities: List<SearchEntity>)
 
     @Query("SELECT * FROM SearchEntity")
     fun getAllSongs(): List<SearchEntity>

@@ -1,5 +1,6 @@
 package com.android.lyricfinder.feature_search.data.remote.dto
 
+import com.android.lyricfinder.feature_search.data.local.entity.SearchEntity
 import com.android.lyricfinder.feature_search.domain.model.Search
 
 data class SearchDto(
@@ -13,7 +14,19 @@ data class Meta(
 
 data class Response(
     val hits: List<Hit>
-)
+){
+    fun toSearchEntities(): List<SearchEntity> {
+        val mapper = hits.map {
+            SearchEntity(
+                imageUrl = it.result.song_art_image_thumbnail_url,
+                songTitle = it.result.title,
+                artistName = it.result.artist_names,
+                songId = it.result.id
+            )
+        }
+        return mapper
+    }
+}
 
 data class Hit(
     val highlights: List<Any>,

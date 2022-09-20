@@ -5,8 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.android.lyricfinder.R
 import com.android.lyricfinder.databinding.FragmentSplashBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
@@ -24,11 +28,20 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        navigateToSearchFragment()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun navigateToSearchFragment(){
+        lifecycleScope.launchWhenStarted {
+            delay(3000L)
+            findNavController().navigate(R.id.action_splashFragment_to_searchFragment)
+        }
     }
 
 }
