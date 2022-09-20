@@ -15,6 +15,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.android.lyricfinder.R
 import com.android.lyricfinder.databinding.FragmentSearchBinding
 import com.android.lyricfinder.feature_search.data.local.entity.SearchEntity
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -25,6 +26,7 @@ class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
     private val binding get() = _binding!!
     private val viewModel: SearchViewModel by viewModels()
+    private val searchAdapter by lazy { SearchAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +39,9 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        onClicks()
         stateCollector()
+        channelCollector()
     }
 
     override fun onDestroyView() {
@@ -45,12 +49,36 @@ class SearchFragment : Fragment() {
         _binding = null
     }
 
+    private fun onClicks(){
+        binding.apply {
+            btnSearch.setOnClickListener {
+                viewModel.searchAbout(SearchEvent.EnteredTitle(etTitle.text.toString()))
+            }
+
+            searchAdapter.setOnItemClick(object : ICustomClick{
+                override fun <T> onItemClick(vararg data: T) {
+                    Log.e(TAG, "onItemClick: ${data[0]}", )
+                }
+            })
+        }
+    }
+
     private fun stateCollector(){
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.state.collectLatest { searchState ->
+                viewModel.state.collect { searchState ->
                     progressVisibility(searchState.isLoading)
                     setupRecyclerView(searchState.data)
+                }
+            }
+        }
+    }
+
+    private fun channelCollector(){
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.errorChannel.collectLatest { errorMessage ->
+                    showErrorMessage(errorMessage)
                 }
             }
         }
@@ -62,11 +90,14 @@ class SearchFragment : Fragment() {
 
     private fun setupRecyclerView(data: List<SearchEntity>){
         binding.rvSongs.apply {
-            data.forEach {
-                Log.e(TAG, "setupRecyclerView: ${it.songTitle}", )
-            }
-//            this.adapter =
+            searchAdapter.setSearchData(data)
+            this.adapter = searchAdapter
+            data.forEach { Log.e(TAG, "setupRecyclerView: ${it.songTitle}", ) }
         }
+    }
+
+    private fun showErrorMessage(content: String){
+        Snackbar.make(requireView(), content, Snackbar.LENGTH_LONG).show()
     }
 
 

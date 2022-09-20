@@ -38,6 +38,7 @@
             >
 
             <EditText
+                android:id="@+id/et_Title"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@null"
@@ -57,7 +58,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/materialButton"
+        android:id="@+id/btn_Search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -80,7 +81,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Search" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

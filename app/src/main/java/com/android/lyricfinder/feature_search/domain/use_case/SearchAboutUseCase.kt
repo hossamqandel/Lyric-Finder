@@ -16,26 +16,29 @@ class SearchAboutUseCase @Inject constructor(
     private val database: LyricFinderDatabase
 ) {
 
-    operator fun invoke(songTitle: String): Flow<Resource<List<SearchEntity>>> = flow {
+    operator fun invoke(artistName: String): Flow<Resource<List<SearchEntity>>> = flow {
+
+        if (artistName.isBlank()) { return@flow }
+
         emit(Resource.Loading())
         var localResult: List<SearchEntity>
 
         withContext(Dispatchers.IO){
-            localResult = database.searchDao.getAllSongs()
+            localResult = database.searchDao.getAllSongsBySongTitle(artistName)
         }
 
-
-        if (songTitle.isBlank()) return@flow
 
         try {
             delay(1500L)
             withContext(Dispatchers.IO){
-                val remoteResult = repo.searchAboutSongOrArtist(songTitle).response.toSearchEntities()
+                val remoteResult = repo.searchAboutSongOrArtist(artistName).response.toSearchEntities()
                 database.searchDao.insertSongs(remoteResult)
             }
         }catch (e: Exception){
             Log.e(TAG, "invoke: $e" )
-            emit(Resource.Error(data = localResult, message = ""))
+            emit(Resource.Error(
+                data = localResult,
+                message = "Unknown error.. please check your internet connection and try again"))
             return@flow
         }
         emit(Resource.Success(data = localResult))

@@ -12,6 +12,6 @@ interface SearchDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSongs(searchEntities: List<SearchEntity>)
 
-    @Query("SELECT * FROM SearchEntity")
-    fun getAllSongs(): List<SearchEntity>
+    @Query("SELECT * FROM SearchEntity WHERE artistName LIKE :artistName")
+    fun getAllSongsBySongTitle(artistName: String): List<SearchEntity>
 }

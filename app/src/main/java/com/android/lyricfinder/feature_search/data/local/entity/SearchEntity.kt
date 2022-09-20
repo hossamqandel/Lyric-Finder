@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class SearchEntity(
     val imageUrl: String? = null,
-    val songTitle: String? = null,
+    val songTitle: String = "".lowercase(),
     val artistName: String? = null,
     @PrimaryKey(autoGenerate = false)
     val songId: Int? = null

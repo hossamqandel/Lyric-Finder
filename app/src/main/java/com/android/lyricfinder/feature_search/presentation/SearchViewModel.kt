@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.android.lyricfinder.feature_search.domain.use_case.SearchAboutUseCase
 import com.android.lyricfinder.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -13,23 +14,29 @@ class SearchViewModel @Inject constructor(
     private val searchAboutUseCase: SearchAboutUseCase
 ): ViewModel() {
 
-    private val _state= MutableStateFlow(SearchState())
+    private val _state = MutableStateFlow(SearchState())
     val state: StateFlow<SearchState> = _state.asStateFlow()
 
-    init {
-        searchAbout("Alan Walker")
-    }
+    private val _errorChannel = Channel<String>()
+    val errorChannel = _errorChannel.receiveAsFlow()
 
-    fun searchAbout(songTitle: String){
-        searchAboutUseCase.invoke(songTitle).onEach {
-            when(it){
-                is Resource.Loading -> _state.value = state.value.copy(isLoading = true)
+    fun searchAbout(searchEvent: SearchEvent){
+        when(searchEvent){
+            is SearchEvent.EnteredTitle -> {
+                searchAboutUseCase.invoke(searchEvent.title).onEach {
+                    when(it){
+                        is Resource.Loading -> _state.value = state.value.copy(isLoading = true)
 
-                is Resource.Success -> _state.value = state.value.copy(data = it.data ?: emptyList(), isLoading = false)
+                        is Resource.Success -> _state.value = state.value.copy(data = it.data ?: emptyList(), isLoading = false)
 
-                is Resource.Error -> _state.value = state.value.copy(isLoading = false,
-                    errorMessage = "Unknown error.. please check your internet connection and try again")
+                        is Resource.Error -> { _state.value = state.value.copy(isLoading = false,
+                            data = it.data ?: emptyList())
+                            _errorChannel.send(it.message.toString())
+                        }
+                    }
+                }.launchIn(viewModelScope)
             }
-        }.launchIn(viewModelScope)
+        }
+
     }
 }
