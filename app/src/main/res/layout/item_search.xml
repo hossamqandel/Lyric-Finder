@@ -3,16 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="6dp"
+    android:padding="2dp"
     xmlns:tools="http://schemas.android.com/tools">
+
+
 
 
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/blackCard"
-        android:layout_width="350dp"
-        android:layout_height="400dp"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
         android:layout_marginTop="16dp"
+        app:cardElevation="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:backgroundTint="#202020">
@@ -27,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="271dp" />
+                app:layout_constraintGuide_begin="171dp" />
 
             <TextView
                 android:id="@+id/tv_songTitle"
@@ -74,11 +77,12 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         app:layout_constraintStart_toStartOf="@id/blackCard"
         app:layout_constraintEnd_toEndOf="@id/blackCard"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardElevation="16dp">
 
         <ImageView
             android:layout_width="match_parent"
