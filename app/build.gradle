@@ -9,6 +9,10 @@ plugins {
 android {
     compileSdk 32
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.android.lyricfinder"
         minSdk 21
@@ -24,6 +28,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
