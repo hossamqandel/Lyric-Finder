@@ -20,7 +20,7 @@ data class Response(
             SearchEntity(
                 imageUrl = it.result.song_art_image_thumbnail_url,
                 songTitle = it.result.title,
-                artistName = it.result.artist_names,
+                singerName = it.result.artist_names,
                 songId = it.result.id
             )
         }
@@ -68,7 +68,7 @@ data class Result(
         return Search(
             imageUrl = song_art_image_thumbnail_url,
             songTitle = title,
-            artistName = artist_names,
+            singerName = artist_names,
             songId = id
         )
     }

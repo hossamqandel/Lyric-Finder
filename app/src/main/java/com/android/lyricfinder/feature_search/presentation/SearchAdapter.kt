@@ -35,7 +35,7 @@ class SearchAdapter : RecyclerView.Adapter<SearchAdapter.SearchViewHolder>() {
 
     override fun onBindViewHolder(holder: SearchViewHolder, position: Int) {
         holder.songTitle.text = data[position].songTitle
-        holder.artistName.text = data[position].artistName
+        holder.artistName.text = data[position].singerName
         try {
             Glide.with(holder.songImg.context)
                 .load(data[position].imageUrl)

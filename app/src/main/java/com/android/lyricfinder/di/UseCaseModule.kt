@@ -13,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideSearchAboutUseCase(repo: ISearchRepository, database: LyricFinderDatabase): SearchAboutUseCase {
-        return SearchAboutUseCase(repo, database)
+    fun provideSearchAboutUseCase(repo: ISearchRepository): SearchAboutUseCase {
+        return SearchAboutUseCase(repo)
     }
 }

@@ -66,7 +66,7 @@ class SearchFragment : Fragment() {
     private fun stateCollector(){
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.state.collect { searchState ->
+                viewModel.state.collectLatest { searchState ->
                     progressVisibility(searchState.isLoading)
                     setupRecyclerView(searchState.data)
                 }

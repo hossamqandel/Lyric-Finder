@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="2dp"
+    android:padding="8dp"
     xmlns:tools="http://schemas.android.com/tools">
 
 
@@ -12,13 +12,14 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/blackCard"
-        android:layout_width="200dp"
-        android:layout_height="300dp"
+        android:layout_width="160dp"
+        android:layout_height="250dp"
         android:layout_marginTop="16dp"
-        app:cardElevation="16dp"
+        app:cardElevation="0dp"
+        app:cardCornerRadius="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="#202020">
+        android:backgroundTint="#1e1e1e">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -30,18 +31,20 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_begin="171dp" />
+                app:layout_constraintGuide_begin="140dp" />
 
             <TextView
                 android:id="@+id/tv_songTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:paddingHorizontal="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline2"
                 tools:text="Faded"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -49,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#BFBFBF"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:layout_marginTop="6dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -62,14 +65,14 @@
                 android:id="@+id/btn_getLyrics"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Get Lyrics →"
                 android:textColor="#D50000"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_artistName"
-                tools:text="Get Lyrics →" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_artistName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -77,10 +80,11 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintStart_toStartOf="@id/blackCard"
-        app:layout_constraintEnd_toEndOf="@id/blackCard"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:cardElevation="16dp">
 
@@ -88,7 +92,8 @@
             android:id="@+id/iv_songImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/song_poster" />
+            android:src="@drawable/song_poster"
+            android:scaleType="fitXY"/>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
