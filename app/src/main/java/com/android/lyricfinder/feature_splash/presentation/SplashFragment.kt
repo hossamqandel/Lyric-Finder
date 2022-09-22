@@ -32,16 +32,29 @@ class SplashFragment : Fragment() {
         navigateToSearchFragment()
     }
 
+    override fun onStop() {
+        super.onStop()
+        isFirstVisit = false
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
     private fun navigateToSearchFragment(){
-        lifecycleScope.launchWhenStarted {
-            delay(3000L)
+        if (isFirstVisit){
+            lifecycleScope.launchWhenStarted {
+                delay(3000L)
+                findNavController().navigate(R.id.action_splashFragment_to_searchFragment)
+            }
+        } else {
             findNavController().navigate(R.id.action_splashFragment_to_searchFragment)
         }
+    }
+
+    companion object {
+        var isFirstVisit = true
     }
 
 }
