@@ -3,7 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-land/fragment_search.xml" value="0.3145833333333333" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw320dp-land/fragment_detail.xml" value="0.3145833333333333" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw320dp-land/fragment_search.xml" value="0.3145833333333333" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw320dp/fragment_detail.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw320dp/fragment_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw480dp-land/fragment_detail.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw480dp-land/fragment_search.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw480dp/fragment_detail.xml" value="0.264" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw480dp/fragment_search.xml" value="0.190625" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw600dp-land/fragment_detail.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw600dp-land/fragment_search.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw600dp/fragment_detail.xml" value="0.190625" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw600dp/fragment_search.xml" value="0.190625" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw720dp-land/fragment_detail.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw720dp-land/fragment_search.xml" value="0.2359375" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw720dp/fragment_detail.xml" value="0.190625" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout-sw720dp/fragment_search.xml" value="0.190625" />
         <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout/fragment_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout/fragment_search.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout/fragment_splash.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidProjects/LyricFinder/app/src/main/res/layout/item_search.xml" value="0.4" />

@@ -8,5 +8,5 @@ data class DetailEntity(
     var lyrics: String? = null,
     val songTitle: String? = null,
     @PrimaryKey(autoGenerate = false)
-    val id: Int? = null
+    val songId: Int? = null
 )

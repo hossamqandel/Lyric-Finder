@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="black_lightRed">#e93443</color>
+    <color name="black_deepRed">#af2534</color>
+    <color name="smooth_white_dark">#121212</color>
+    <color name="white_dark">#121212</color>
+    <color name="dark_white">#FFFFFF</color>
+    <color name="dark_mood2">#121212</color>
+    <color name="light_dark_mood">#2d2d30</color>
+    <color name="light_dark_mood2">#3e3e42</color>
+
+</resources>

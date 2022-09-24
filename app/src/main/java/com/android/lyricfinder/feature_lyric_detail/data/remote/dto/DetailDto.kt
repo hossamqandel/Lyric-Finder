@@ -24,11 +24,11 @@ data class Lyrics(
     val song_id: Int,
     val tracking_data: TrackingData
 ){
-
     fun toDetail(): Detail {
         return Detail(
-            lyrics = lyrics.body.html,
-            songTitle = "Lyrics for ${tracking_data.title}"
+            lyrics = lyrics.body.plain,
+            songTitle = "Lyrics for ${tracking_data.title}",
+            songId = song_id
         )
     }
 }

@@ -11,6 +11,6 @@ interface DetailDao {
     @Insert
     suspend fun insertSongLyric(detailEntity: DetailEntity)
 
-    @Query("SELECT * FROM DetailEntity WHERE id = :id")
-    fun getLyricById(id: Int): DetailEntity
+    @Query("SELECT * FROM DetailEntity WHERE songId = :id")
+    suspend fun getLyricBySongId(id: Int): DetailEntity
 }

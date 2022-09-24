@@ -10,11 +10,16 @@
 
 
 
-    <color name="light_red">#e93443</color>
-    <color name="deep_red">#af2534</color>
+    <color name="light_red">#1e1e1e</color>
+    <color name="black_lightRed">#1e1e1e</color>
+    <color name="black_deepRed">#1e1e1e</color>
 
+    <color name="deep_dark_red">#121212</color>
 
-    <color name="dark_mood">#1e1e1e</color>
+    <color name="dark_white">#1e1e1e</color>
+    <color name="smooth_white_dark">#CCCCCC</color>
+    <color name="white_dark">#FFFFFF</color>
+    <color name="dark_mood2">#FFFFFF</color>
     <color name="light_dark_mood">#2d2d30</color>
     <color name="light_dark_mood2">#3e3e42</color>
 

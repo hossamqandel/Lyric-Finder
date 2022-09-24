@@ -31,16 +31,16 @@ class SearchRepositoryImpl @Inject constructor(
         val oldLocalResult = dao.getAllSongsBySingerName(artistName)
         emit(Resource.Loading(data = oldLocalResult))
 
-        delay(2000L)
+        delay(1500L)
 
         try {
             val remoteResult = api.searchForSongOrArtist(artistName).response.toSearchEntities()
             dao.insertSongs(remoteResult)
         }catch (e: HttpException){
-            Log.e(ContentValues.TAG, "searchAboutSongOrArtist: ${e.cause}" )
+            Log.e(ContentValues.TAG, "searchAboutSongOrArtist: $e" )
             emit(Resource.Error(data = oldLocalResult, message = "Oops, something went wrong!"))
         } catch (e: IOException){
-            Log.e(ContentValues.TAG, "searchAboutSongOrArtist: ${e.cause}" )
+            Log.e(ContentValues.TAG, "searchAboutSongOrArtist: $e" )
             emit(Resource.Error(data = oldLocalResult, message = "Couldn't reach server, check your internet connection."))
 
         }

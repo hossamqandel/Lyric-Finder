@@ -13,7 +13,7 @@ interface LyricFinderService {
 
     @GET("songs/{songId}/lyrics")
     suspend fun getDetail(
-        @Path("songId") songId: String
+        @Path("songId") songId: Int
     ): DetailDto
 
 
