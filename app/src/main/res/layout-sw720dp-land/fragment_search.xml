@@ -73,16 +73,16 @@
         android:id="@+id/rv_songs"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:elevation="1dp"
+        android:orientation="vertical"
         android:paddingTop="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        android:orientation="vertical"
-        app:spanCount="2"
-        android:elevation="1dp"
-        tools:listitem="@layout/item_search"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Search" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Search"
+        app:spanCount="8"
+        tools:listitem="@layout/item_search" />
 
 
     <ProgressBar
@@ -92,11 +92,11 @@
         android:layout_height="wrap_content"
         android:indeterminateTint="@color/black_lightRed"
         android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/rv_songs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
