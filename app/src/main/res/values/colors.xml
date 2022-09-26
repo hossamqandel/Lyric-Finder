@@ -19,6 +19,7 @@
     <color name="dark_white">#1e1e1e</color>
     <color name="smooth_white_dark">#CCCCCC</color>
     <color name="white_dark">#FFFFFF</color>
+    <color name="smooth_white_grey">#CCCCCC</color>
     <color name="dark_mood2">#FFFFFF</color>
     <color name="light_dark_mood">#2d2d30</color>
     <color name="light_dark_mood2">#3e3e42</color>

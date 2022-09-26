@@ -1,16 +1,17 @@
 package com.android.lyricfinder.feature_splash.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.android.lyricfinder.R
 import com.android.lyricfinder.databinding.FragmentSplashBinding
+import com.android.lyricfinder.utils.doNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SplashFragment : Fragment() {
@@ -43,13 +44,14 @@ class SplashFragment : Fragment() {
     }
 
     private fun navigateToSearchFragment(){
+        val action = R.id.action_splashFragment_to_searchFragment
         if (isFirstVisit){
-            lifecycleScope.launchWhenStarted {
+            lifecycleScope.launch {
                 delay(3000L)
-                findNavController().navigate(R.id.action_splashFragment_to_searchFragment)
+                doNavigation(action)
             }
         } else {
-            findNavController().navigate(R.id.action_splashFragment_to_searchFragment)
+            doNavigation(action)
         }
     }
 

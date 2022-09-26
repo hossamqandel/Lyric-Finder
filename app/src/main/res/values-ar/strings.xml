@@ -3,4 +3,8 @@
     <string name="app_name">مكتشف الكلمات</string>
     <string name="search">بحث</string>
     <string name="search_about_a_singer">البحث عن مغني</string>
+    <string name="network_available">Your connection was restored</string>
+    <string name="network_unavailable">You are currently offline</string>
+    <string name="network_lost">Your connection was lost</string>
+    <string name="network_losing">Your are losing the connection</string>
 </resources>

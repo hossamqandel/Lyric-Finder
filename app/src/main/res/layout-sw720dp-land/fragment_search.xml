@@ -43,7 +43,7 @@
                 android:hint="@string/search_about_a_singer"
                 android:inputType="text"
                 android:lines="1"
-                android:textColorHint="@color/smooth_white_dark"
+                android:textColorHint="@color/smooth_white_grey"
                 android:maxLength="32"
                 android:maxLines="1"
                 android:padding="8dp"
