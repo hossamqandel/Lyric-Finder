@@ -14,7 +14,7 @@ class SearchAboutUseCase @Inject constructor(
     operator fun invoke(artistName: String): Flow<Resource<List<SearchEntity>>> {
 
         if (artistName.isBlank()){
-            return flow {  }
+            return flow { }
         }
 
         return repo.searchForSongsBySingerName(artistName)

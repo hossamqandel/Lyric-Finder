@@ -41,7 +41,7 @@ class SearchRepositoryImpl @Inject constructor(
             emit(Resource.Error(data = oldLocalResult, message = "Oops, something went wrong!"))
         } catch (e: IOException){
             Log.e(ContentValues.TAG, "searchAboutSongOrArtist: $e" )
-            emit(Resource.Error(data = oldLocalResult, message = "Couldn't reach server, check your internet connection."))
+            emit(Resource.Success(data = oldLocalResult))
 
         }
 

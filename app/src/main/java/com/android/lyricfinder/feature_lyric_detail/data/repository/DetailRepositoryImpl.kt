@@ -27,17 +27,16 @@ class DetailRepositoryImpl @Inject constructor(
         try {
             val remoteResult = api.getDetail(songId)
             dao.insertSongLyric(remoteResult.response.lyrics.toDetail().toDetailEntity())
-
-        }catch (e: IOException){
+        } catch (e: IOException){
             Log.e(TAG, "getLyricBySongId: $e")
             emit(Resource.Error(
                 message = "Your are currently offline",
                 data = lastSavedResult ))
-        }catch (e: HttpException){
+            return@flow
+        } catch (e: HttpException){
             Log.e(TAG, "getLyricBySongId: $e")
-            emit(Resource.Error(
-                message = "Oops, something went wrong!",
-                data = lastSavedResult ))
+            emit(Resource.Error(data = lastSavedResult, message = "you are now o"))
+//            return@flow
         }
 
         val lastInsertedResult = dao.getLyricBySongId(songId)

@@ -23,16 +23,20 @@ class DetailViewModel @Inject constructor(
     fun getDetail(detailEvent: DetailEvent) {
         when (detailEvent) {
             is DetailEvent.SongId -> {
-
                 getLyricUseCase.invoke(detailEvent.songId).onEach { resource ->
                     when (resource) {
-                        is Resource.Loading -> _state.value = state.value.copy(isLoading = true)
+                        is Resource.Loading -> _state.value = state.value.copy(isLoading = true, isNeedTry = false)
+
                         is Resource.Success -> _state.value =
-                            state.value.copy(isLoading = false, lyric = resource.data)
-                        is Resource.Error -> { _state.value = state.value.copy(
-                                isLoading = false,
-                                lyric = resource.data)
-                            _errorChannel.send(resource.message.toString())
+                            state.value.copy(isLoading = false, lyric = resource.data, isNeedTry = false)
+
+                        is Resource.Error -> {
+                            if (resource.data?.lyrics.isNullOrBlank()){
+                                _state.value = state.value.copy(isLoading = false, isNeedTry = true)
+                            } else {
+                                _state.value = state.value.copy(isLoading = false, lyric = resource.data, isNeedTry = false)
+//                                _errorChannel.send(resource.message.toString())
+                            }
                         }
                     }
                 }.launchIn(viewModelScope)
